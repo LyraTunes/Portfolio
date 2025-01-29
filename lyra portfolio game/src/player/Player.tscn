@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bc01lphrykqwj"]
+
+[ext_resource type="Script" path="res://src/player/Player.gd" id="1_mf2j4"]
+[ext_resource type="Texture2D" uid="uid://m1decjkcg4l1" path="res://assets/pictures/pc front.png" id="2_pc6k2"]
+[ext_resource type="Texture2D" uid="uid://hh3xdax2a8qk" path="res://assets/pictures/pc right.png" id="3_epxqo"]
+[ext_resource type="Texture2D" uid="uid://c3lwph8y8sagj" path="res://assets/pictures/pc left.png" id="4_0epe2"]
+[ext_resource type="Texture2D" uid="uid://uwksaj0osgw" path="res://assets/pictures/pc back.png" id="5_1tmkm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fj22w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pc6k2")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0epe2")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_epxqo")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_1tmkm")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sgne"]
+size = Vector2(75, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3kxq"]
+size = Vector2(91, 125)
+
+[node name="PLayer" type="CharacterBody2D"]
+script = ExtResource("1_mf2j4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, -30)
+scale = Vector2(0.09725, 0.138)
+sprite_frames = SubResource("SpriteFrames_fj22w")
+animation = &"up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(38.5, 20)
+shape = SubResource("RectangleShape2D_8sgne")
+
+[node name="dialog interaction area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialog interaction area"]
+position = Vector2(40.5, -29.5)
+shape = SubResource("RectangleShape2D_o3kxq")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6oww6fkwjyoj"]
+
+[ext_resource type="PackedScene" uid="uid://c1vu4hjeh5i70" path="res://src/world/world.tscn" id="1_os3e2"]
+
+[node name="main" type="Node2D"]
+
+[node name="museum" parent="." instance=ExtResource("1_os3e2")]
+position = Vector2(48, 638)
+scale = Vector2(2.7181, 2.7181)
+
+[node name="Background" parent="museum/DialogPlayer" index="0"]
+offset_left = 454.0
+offset_top = 181.0
+offset_right = 710.0
+offset_bottom = 278.0
+
+[node name="TextLabel" parent="museum/DialogPlayer" index="1"]
+offset_left = 452.0
+offset_top = 183.0
+offset_right = 708.0
+offset_bottom = 280.0
+
+[editable path="museum"]
+[editable path="museum/DialogPlayer"]
+[editable path="museum/NPCs/npc1/NPC1Dialog"]
+[editable path="museum/NPCs/npc2/NPC2Dialog"]
+[editable path="museum/NPCs/npc3/NPC3Dialog"]
+[editable path="museum/NPCs/npc4/NPC4Dialog"]
+[editable path="museum/NPCs/npc5/NPC5Dialog"]
