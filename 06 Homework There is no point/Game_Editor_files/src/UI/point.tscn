@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://baj67puxprg6f"]
+
+[ext_resource type="Script" path="res://src/UI/point.gd" id="1_e2hsb"]
+[ext_resource type="Texture2D" uid="uid://b6c5v1f2acnju" path="res://assets/point.png" id="2_xrump"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uqle"]
+radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf0x1"]
+size = Vector2(100, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jthjd"]
+radius = 90.0222
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4a0ir"]
+
+[node name="Point" type="CharacterBody2D"]
+script = ExtResource("1_e2hsb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5uqle")
+
+[node name="draganddrop" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="draganddrop"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vf0x1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("2_xrump")
+
+[node name="scan hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scan hitbox"]
+shape = SubResource("CircleShape2D_jthjd")
+
+[node name="counter" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="counter"]
+shape = SubResource("CircleShape2D_4a0ir")
+
+[connection signal="input_event" from="draganddrop" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="scan hitbox" to="." method="_on_scan_hitbox_area_entered"]
+[connection signal="area_entered" from="counter" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="counter" to="." method="_on_area_2d_area_exited"]

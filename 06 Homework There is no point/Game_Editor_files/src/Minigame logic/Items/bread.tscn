@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://degx24pne6nch"]
+
+[ext_resource type="PackedScene" uid="uid://bigwqi3b8gw01" path="res://src/Minigame logic/movable_ware.tscn" id="1_4hogd"]
+[ext_resource type="Texture2D" uid="uid://dyyehu2jbrnr" path="res://assets/bread.png" id="2_5g3il"]
+
+[node name="movable Ware" instance=ExtResource("1_4hogd")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_5g3il")

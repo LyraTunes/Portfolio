@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnq6j1b222qnb"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_nr1tn"]
+[ext_resource type="PackedScene" uid="uid://5xsuwmwb7x0b" path="res://src/world/minigame.tscn" id="2_3u75h"]
+[ext_resource type="PackedScene" uid="uid://4u3y0vtj4jr7" path="res://src/Narrator/DialogPlayer.tscn" id="3_6jyjl"]
+[ext_resource type="PackedScene" uid="uid://dun7agfm685ey" path="res://src/UI/found_point.tscn" id="4_be6fu"]
+[ext_resource type="PackedScene" uid="uid://cxwflx7fotx72" path="res://src/UI/start_screen.tscn" id="5_gw4ir"]
+[ext_resource type="PackedScene" uid="uid://p8lv8qhx4342" path="res://src/UI/point_square.tscn" id="6_npcaj"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_nr1tn")
+dialogue_file = "res://src/Narrator/Dialogue.json"
+
+[node name="Minigame" parent="." instance=ExtResource("2_3u75h")]
+
+[node name="CollisionShape2D" parent="Minigame/Counter" index="0"]
+debug_color = Color(0, 0.603922, 0.666667, 0.568627)
+
+[node name="Scanner" parent="Minigame" index="2"]
+position = Vector2(37, 83)
+
+[node name="DialogPlayer" parent="." instance=ExtResource("3_6jyjl")]
+
+[node name="NextCustomer" type="Button" parent="."]
+offset_left = 1008.0
+offset_top = 308.0
+offset_right = 1133.0
+offset_bottom = 339.0
+text = "Next Customer"
+
+[node name="FoundPoint" parent="." instance=ExtResource("4_be6fu")]
+process_mode = 3
+
+[node name="StartScreen" parent="." instance=ExtResource("5_gw4ir")]
+
+[node name="PointSquare" parent="." instance=ExtResource("6_npcaj")]
+
+[connection signal="area_exited" from="Minigame/Scanner" to="Minigame" method="_on_scanner_area_exited"]
+[connection signal="pressed" from="NextCustomer" to="." method="_on_button_pressed"]
+
+[editable path="Minigame"]
